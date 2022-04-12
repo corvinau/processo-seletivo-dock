@@ -1,0 +1,176 @@
+div.repository-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.card {
+  background-color: white;
+  text-align: center;
+
+  padding: 2rem;
+  margin-bottom: 2rem;
+
+  border-radius: 5px;
+
+  box-shadow: -7px 7px 7px -1px rgba(0, 0, 0, 0.15);
+}
+
+div.user-info-card {
+  width: 30%;
+  height: 100%;
+
+  div.user-info-card-container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    div.user-info-card-avatar {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 0.5rem;
+
+      img {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    div.user-info-card-info {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      div.user-info-card-name,
+      div.user-info-card-login {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      div.user-info-card-bio {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+div.respository {
+  width: 65%;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    cursor: pointer;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+    }
+
+    span {
+      font-style: none;
+    }
+
+    div.repository-item-box {
+      padding: 1rem;
+
+      margin-bottom: 2rem;
+
+      border-radius: 5px;
+
+      box-shadow: -7px 7px 7px -1px rgba(0, 0, 0, 0.15);
+
+      background-color: #ffffff;
+      font-style: none;
+      
+
+      div.repository-item-box-header {
+        display: flex;
+        justify-content: space-between;
+
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+
+        span.repository-item-box-watchers {
+          display: flex;
+          align-items: center;
+
+
+          svg {
+            margin-left: 5px;
+          }
+        }
+      }
+
+      div.repository-item-box-content {
+        hyphens: auto;
+        word-break: break-word;
+
+        font-size: 0.9rem;
+
+        margin-bottom: 1rem;
+      }
+
+      div.repository-item-box-infos {
+        display: flex;
+        justify-content: space-between;
+        
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 425px) {
+//   a {
+//     div.repository-item-box {
+//       div.repository-item-box__header {
+//         word-break: break-all;
+//         font-size: 1rem;
+//         flex-direction: column;
+
+//         span.repository-item-box__stars {
+//           margin-top: 0.25rem;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 320px) {
+//   a {
+//     div.repository-item-box {
+//       padding: 0.75rem;
+//     }
+//   }
+// }
+
+@media screen and (max-width: 450px) {
+  div.card {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  div.user-info-card {
+    width: 100%;
+  }
+
+  div.respository {
+    width: 100%;
+  }
+}

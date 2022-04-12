@@ -13,23 +13,34 @@ const RepositorioContext = createContext<IRepositorioContext>(
  * para atualizar o nome do usuário.
  */
 const RepositorioProvider: React.FC = ({ children }) => {
-  const [usernameRepositorio, setUsernameRepositorio] = useState('');
+  const [username, setUsername] = useState({} as IUserData);
+  const [repositorio, setRepositorio] = useState<IRepositoryData[]>();
 
-  const updateUsernameRepositorio = useCallback(
-    async (username, perPage = 50): Promise<void> => {
+  const updateUsername = useCallback(async (user): Promise<void> => {
+    try {
+      const response = await api.get(`/users/${user}`);
+
+      setUsername(response.data);
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        setUsername({ login: '', name: '' });
+      }
+    }
+  }, []);
+
+  const updateRepositorio = useCallback(
+    async (user, perPage = 50): Promise<void> => {
       try {
-        const response = await api.get(`/users/${username}/repos`, {
+        const response = await api.get(`/users/${user}/repos`, {
           params: {
             per_page: perPage,
           },
         });
 
-        console.log('repo', response.data);
-
-        setUsernameRepositorio(response.data);
+        setRepositorio(response.data);
       } catch (e) {
         if (axios.isAxiosError(e)) {
-          setUsernameRepositorio('');
+          setRepositorio([]);
         }
       }
     },
@@ -38,7 +49,12 @@ const RepositorioProvider: React.FC = ({ children }) => {
 
   return (
     <RepositorioContext.Provider
-      value={{ updateUsernameRepositorio, usernameRepositorio }}>
+      value={{
+        updateRepositorio,
+        repositorio,
+        updateUsername,
+        username,
+      }}>
       {children}
     </RepositorioContext.Provider>
   );

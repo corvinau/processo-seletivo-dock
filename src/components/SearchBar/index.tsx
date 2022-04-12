@@ -2,7 +2,6 @@ import React from 'react';
 
 import { BsSearch, BsGithub } from 'react-icons/bs';
 
-import { useUsuario } from 'src/hooks/usuario';
 import { useRepositorio } from 'src/hooks/repositorio';
 
 import './styles.scss';
@@ -11,8 +10,7 @@ import './styles.scss';
  * Componente que representa o card do formulário de busca de usuários.
  */
 const SearchBar: React.FC = () => {
-  const { updateUsernameRepositorio } = useRepositorio();
-  const { updateUsername } = useUsuario();
+  const { updateRepositorio, updateUsername } = useRepositorio();
 
   /**
    * Função que irá atualizar o estado global com o valor do input.
@@ -22,7 +20,7 @@ const SearchBar: React.FC = () => {
     e.preventDefault();
 
     const username = e.currentTarget.search.value;
-    updateUsernameRepositorio(username);
+    updateRepositorio(username);
     updateUsername(username);
   };
 
