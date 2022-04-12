@@ -7,8 +7,7 @@ const UsuarioContext = createContext<IUsuarioContext>({} as IUsuarioContext);
 
 /**
  * Provider feito para armazenar o estado global.
- * Aqui, será armazenado o nome de usuário
- * e uma função para atualizar o nome do usuário.
+ * Aqui, será armazenado o nome de usuário e uma função para atualizar o nome do usuário.
  */
 const UsuarioProvider: React.FC = ({ children }) => {
   const [username, setUsername] = useState('');
@@ -17,7 +16,7 @@ const UsuarioProvider: React.FC = ({ children }) => {
     try {
       const response = await api.get(`/users/${username}`);
 
-      console.log('user', response);
+      console.log('user', response.data);
 
       setUsername(response.data);
     } catch (e) {

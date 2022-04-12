@@ -7,7 +7,7 @@ const api = applyCaseMiddleware(
     baseURL: process.env.REACT_APP_BASE_URL,
     xsrfHeaderName: 'X-CSRFToken',
     xsrfCookieName: 'csrftoken',
-    withCredentials: true,
+    withCredentials: false,
     paramsSerializer: params => {
       return qs.stringify(params, {
         arrayFormat: 'none',
