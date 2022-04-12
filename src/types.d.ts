@@ -1,20 +1,19 @@
 interface IRepositoryData {
-  createdAt: string;
-  description?: string;
-  htmlUrl: string;
   id: number;
-  language: string;
+  htmlUrl: string;
   fullName: string;
   watchers: number;
+  description?: string;
+  createdAt: string;
   updatedAt: string;
+  language: string;
 }
-
 
 interface IUserData {
   avatarUrl?: string;
-  bio?: string;
-  login: string;
   name: string;
+  login: string;
+  bio?: string;
 }
 
 interface IRepositorioContext {

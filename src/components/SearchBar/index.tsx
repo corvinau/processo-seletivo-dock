@@ -7,13 +7,13 @@ import { useRepositorio } from 'src/hooks/repositorio';
 import './styles.scss';
 
 /**
- * Componente que representa o card do formulário de busca de usuários.
+ * Componente que representa o card do formulário de busca.
  */
 const SearchBar: React.FC = () => {
   const { updateRepositorio, updateUsername } = useRepositorio();
 
   /**
-   * Função que irá atualizar o estado global com o valor do input.
+   * Função que irá atualizar os estados globais com o valor do input.
    * @param e Evento de submit do formulário
    */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

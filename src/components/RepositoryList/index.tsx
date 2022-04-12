@@ -7,8 +7,8 @@ import { useRepositorio } from 'src/hooks/repositorio';
 import './styles.scss';
 
 /**
- * Componente que representa a lista de repositórios encontrados na busca.
- * Caso não haja repositórios, exibe uma mensagem informando que não foram
+ * Componente que representa o usuário e a lista de repositórios encontrados na busca.
+ * Caso não haja usuário e/ou repositórios, exibe uma mensagem informando que não foram
  * encontrados resultados.
  */
 const RepositoryList: React.FC = () => {
@@ -23,17 +23,21 @@ const RepositoryList: React.FC = () => {
               <img src={username.avatarUrl} alt='User Avatar' />
             </div>
             <div className='user-info-card-info'>
-              <div className='user-info-card-name'>{username.name}</div>
+              <div className='user-info-card-name'>
+                <b>{username.name}</b>
+              </div>
               <div className='user-info-card-login'>@{username.login}</div>
               <div className='user-info-card-bio'>{username.bio}</div>
             </div>
           </div>
         </div>
       ) : (
-        <div className='card user-info-card'>Nenhum usuário encontrado</div>
+        <div className='card user-info-card user-info-card-empty'>
+          Nenhum usuário encontrado
+        </div>
       )}
 
-      {repositorio ? (
+      {repositorio && repositorio?.length !== 0 ? (
         <div className='respository'>
           {repositorio.map((item) => (
             <a
@@ -43,7 +47,9 @@ const RepositoryList: React.FC = () => {
               key={item.id}>
               <div className='repository-item-box' key={item.id}>
                 <div className='repository-item-box-header'>
-                  <span>{item.fullName}</span>
+                  <span>
+                    <b>{item.fullName}</b>
+                  </span>
                   <span className='repository-item-box-watchers'>
                     {item.watchers} <BsEye />
                   </span>
@@ -57,23 +63,26 @@ const RepositoryList: React.FC = () => {
 
                 <div className='repository-item-box-infos'>
                   <span>
-                    Data da criação:{' '}
+                    <b>Data da criação:</b>{' '}
                     {new Date(item.createdAt).toLocaleDateString('pt-BR', {
                       day: '2-digit',
                       month: '2-digit',
                       year: 'numeric',
                     })}
                   </span>
+                  <span className='repository-item-box-infos-divider'></span>
                   <span>
-                    Última atualização:{' '}
+                    <b>Última atualização:</b>{' '}
                     {new Date(item.updatedAt).toLocaleDateString('pt-BR', {
                       day: '2-digit',
                       month: '2-digit',
                       year: 'numeric',
                     })}
                   </span>
+                  <span className='repository-item-box-infos-divider'></span>
                   <span>
-                    Linguagem principal: {item.language ? item.language : '-'}
+                    <b>Linguagem principal:</b>{' '}
+                    {item.language ? item.language : '-'}
                   </span>
                 </div>
               </div>
@@ -81,7 +90,9 @@ const RepositoryList: React.FC = () => {
           ))}
         </div>
       ) : (
-        <div className='card respository'>Nenhum repositório encontrado</div>
+        <div className='card respository repository-empty'>
+          Nenhum repositório encontrado
+        </div>
       )}
     </div>
   );

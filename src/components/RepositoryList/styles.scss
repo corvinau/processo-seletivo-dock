@@ -45,10 +45,13 @@ div.user-info-card {
       flex-direction: column;
       text-align: center;
 
-      div.user-info-card-name,
-      div.user-info-card-login {
+      div.user-info-card-name {
         font-size: 1.5rem;
-        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      div.user-info-card-login {
+        font-size: 1.2rem;
         margin-bottom: 0.5rem;
       }
 
@@ -100,7 +103,6 @@ div.respository {
         justify-content: space-between;
 
         font-size: 1.25rem;
-        font-weight: 600;
         margin-bottom: 1rem;
 
         span.repository-item-box-watchers {
@@ -130,34 +132,20 @@ div.respository {
         font-size: 0.8rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
+
+        span.repository-item-box-infos-divider {
+          border-left: 1px solid black;
+          margin: 0 10px;
+        }
       }
     }
   }
 }
 
-// @media screen and (max-width: 425px) {
-//   a {
-//     div.repository-item-box {
-//       div.repository-item-box__header {
-//         word-break: break-all;
-//         font-size: 1rem;
-//         flex-direction: column;
-
-//         span.repository-item-box__stars {
-//           margin-top: 0.25rem;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 320px) {
-//   a {
-//     div.repository-item-box {
-//       padding: 0.75rem;
-//     }
-//   }
-// }
+.user-info-card-empty,
+.repository-empty {
+  height: 82px;
+}
 
 @media screen and (max-width: 450px) {
   div.card {
@@ -165,7 +153,23 @@ div.respository {
   }
 }
 
+@media screen and (max-width: 528px) {
+  div.respository {
+    div.repository-item-box {
+      div.repository-item-box-header {
+        span {
+          word-break: break-word;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 900px) {
+  div.repository-list {
+    flex-direction: column;
+  }
+
   div.user-info-card {
     width: 100%;
   }

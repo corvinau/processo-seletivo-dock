@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.scss';
 
 /**
- * Componente para envolver todos os outros componentes.
+ * Componente que envolve os outros componentes.
  * @param children Componentes filhos
  */
 const Container: React.FC = ({ children }) => {

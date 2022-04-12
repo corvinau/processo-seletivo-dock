@@ -8,9 +8,9 @@ const RepositorioContext = createContext<IRepositorioContext>(
 );
 
 /**
- * Provider feito para armazenar o estado global.
- * Aqui, será armazenado o nome de usuário relacionado aos repositórios e uma função
- * para atualizar o nome do usuário.
+ * Provider feito para armazenar os estados globais.
+ * Aqui, será armazenado o nome de usuário e os repositórios desse usuário, além de
+ * funções que atualizam tanto o nome do usuário quanto os repositórios.
  */
 const RepositorioProvider: React.FC = ({ children }) => {
   const [username, setUsername] = useState({} as IUserData);
